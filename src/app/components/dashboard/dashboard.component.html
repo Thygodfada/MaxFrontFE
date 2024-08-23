@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="mt-5">
+    <h2>Available Projects</h2>
+    <div *ngIf="projects?.length; else noProjects">
+      <div class="list-group">
+        <a
+          *ngFor="let project of projects"
+          class="list-group-item list-group-item-action"
+          [routerLink]="['/project', project.id]"
+        >
+          <h5 class="mb-1">{{ project.title }}</h5>
+          <p class="mb-1">{{ project.description }}</p>
+          <small>Deadline: {{ project.deadline | date }}</small>
+        </a>
+      </div>
+    </div>
+    <ng-template #noProjects>
+      <p class="text-muted">No projects available at the moment.</p>
+    </ng-template>
+  </div>
+</div>
