@@ -8,13 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ProjectComponent } from './components/project/project.component';
+import { AuthGuard } from './components/auth/models/authGuard';
+import { AuthService } from './components/auth/services/auth.service';
+import { BidComponent } from './components/bid/bid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    ProjectComponent
+    ProjectComponent,
+    BidComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,7 @@ import { ProjectComponent } from './components/project/project.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [
+  providers: [ AuthGuard, AuthService,
     provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]

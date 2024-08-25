@@ -1,1 +1,33 @@
-<p>bid works!</p>
+<div class="container mt-4">
+  <h2>Bids Dashboard</h2>
+  <button class="btn btn-primary mb-3" (click)="navigateToBidSubmission()">
+    Submit New Bid
+  </button>
+
+  <div *ngIf="bids && bids.length > 0; else noBids">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Bid ID</th>
+          <th>Vendor ID</th>
+          <th>Project ID</th>
+          <th>Amount</th>
+          <th>Submitted At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bid of bids">
+          <td>{{ bid.id }}</td>
+          <td>{{ bid.vendorId }}</td>
+          <td>{{ bid.projectId }}</td>
+          <td>{{ bid.amount }}</td>
+          <td>{{ bid.submittedAt }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noBids>
+    <p>No bids submitted yet.</p>
+  </ng-template>
+</div>
